@@ -69,3 +69,6 @@ Z
 *ca1/tut-react-and-spring-data-rest/pom.xml,3\4\3468c67cdb71e798bf6ec557058a458bb57548a2
 =
 ca1/README.md,3\b\3b5425e24a3ecef73a77455fe09429bc19ca8c2f
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
