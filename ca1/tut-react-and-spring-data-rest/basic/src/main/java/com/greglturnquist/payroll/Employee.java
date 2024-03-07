@@ -32,13 +32,31 @@ public class Employee {
 	private String firstName;
 	private String lastName;
 	private String description;
+	private int jobYears;
 
-	private Employee() {}
+	public Employee() {}
 
-	public Employee(String firstName, String lastName, String description) {
+	public Employee(String firstName, String lastName, String description, int jobYears) throws InstantiationException {
+		if (areParamsNullOrEmpty(firstName,lastName,description) || !areJobYearsValid(jobYears)){
+			throw new InstantiationException("Invalid parameters");
+		}
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.description = description;
+		this.jobYears = jobYears;
+	}
+
+	private boolean areParamsNullOrEmpty(String... params){
+		for (String param : params){
+			if (param == null || param.trim().isEmpty()){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private boolean areJobYearsValid(int jobYears){
+		return jobYears > 0;
 	}
 
 	@Override
@@ -55,7 +73,7 @@ public class Employee {
 	@Override
 	public int hashCode() {
 
-		return Objects.hash(id, firstName, lastName, description);
+		return Objects.hash(id, firstName, lastName, description, jobYears);
 	}
 
 	public Long getId() {
@@ -90,6 +108,13 @@ public class Employee {
 		this.description = description;
 	}
 
+	public int getJobYears(){
+		return this.jobYears;
+	}
+	public void setJobYears(int jobYears){
+		this.jobYears = jobYears;
+	}
+
 	@Override
 	public String toString() {
 		return "Employee{" +
@@ -97,6 +122,7 @@ public class Employee {
 			", firstName='" + firstName + '\'' +
 			", lastName='" + lastName + '\'' +
 			", description='" + description + '\'' +
+			", jobYears='" + jobYears + '\'' +
 			'}';
 	}
 }
