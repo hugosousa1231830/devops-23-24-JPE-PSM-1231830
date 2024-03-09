@@ -11,8 +11,9 @@ class EmployeeTest {
         String lastName = "Parker";
         String description = "The first employee";
         int jobYears = 5;
+        String email = "asda@safsa";
 
-        Employee employee = new Employee(firstName,lastName,description,jobYears);
+        Employee employee = new Employee(firstName,lastName,description,jobYears,email);
         int result = employee.getJobYears();
         assertEquals(jobYears,result);
     }
@@ -22,10 +23,11 @@ class EmployeeTest {
         String lastName = "Parker";
         String description = "The first employee";
         int jobYears = 5;
+        String email = "asda@safsa";
 
         String expected = "Invalid parameters";
         Exception exception = assertThrows(InstantiationException.class, () ->
-                new Employee(firstName,lastName,description,jobYears));
+                new Employee(firstName,lastName,description,jobYears,email));
         String result = exception.getMessage();
 
         assertEquals(expected,result);
@@ -37,10 +39,11 @@ class EmployeeTest {
         String lastName = "Parker";
         String description = "The first employee";
         int jobYears = 5;
+        String email = "asda@safsa";
 
         String expected = "Invalid parameters";
         Exception exception = assertThrows(InstantiationException.class, () ->
-                new Employee(firstName,lastName,description,jobYears));
+                new Employee(firstName,lastName,description,jobYears,email));
         String result = exception.getMessage();
 
         assertEquals(expected,result);
@@ -52,10 +55,11 @@ class EmployeeTest {
         String lastName = " ";
         String description = "The first employee";
         int jobYears = 5;
+        String email = "asda@safsa";
 
         String expected = "Invalid parameters";
         Exception exception = assertThrows(InstantiationException.class, () ->
-                new Employee(firstName,lastName,description,jobYears));
+                new Employee(firstName,lastName,description,jobYears,email));
         String result = exception.getMessage();
 
         assertEquals(expected,result);
@@ -67,10 +71,11 @@ class EmployeeTest {
         String lastName = null;
         String description = "The first employee";
         int jobYears = 5;
+        String email = "asda@safsa";
 
         String expected = "Invalid parameters";
         Exception exception = assertThrows(InstantiationException.class, () ->
-                new Employee(firstName,lastName,description,jobYears));
+                new Employee(firstName,lastName,description,jobYears,email));
         String result = exception.getMessage();
 
         assertEquals(expected,result);
@@ -82,10 +87,11 @@ class EmployeeTest {
         String lastName = "Parker";
         String description = " ";
         int jobYears = 5;
+        String email = "asda@safsa";
 
         String expected = "Invalid parameters";
         Exception exception = assertThrows(InstantiationException.class, () ->
-                new Employee(firstName,lastName,description,jobYears));
+                new Employee(firstName,lastName,description,jobYears,email));
         String result = exception.getMessage();
 
         assertEquals(expected,result);
@@ -97,10 +103,10 @@ class EmployeeTest {
         String lastName = "Parker";
         String description = null;
         int jobYears = 5;
-
+        String email = "asda@safsa";
         String expected = "Invalid parameters";
         Exception exception = assertThrows(InstantiationException.class, () ->
-                new Employee(firstName,lastName,description,jobYears));
+                new Employee(firstName,lastName,description,jobYears,email));
         String result = exception.getMessage();
 
         assertEquals(expected,result);
@@ -112,13 +118,27 @@ class EmployeeTest {
         String lastName = "Parker";
         String description = "The slimyest employee";
         int jobYears = -1;
+        String email = "asda@safsa";
 
         String expected = "Invalid parameters";
         Exception exception = assertThrows(InstantiationException.class, () ->
-                new Employee(firstName,lastName,description,jobYears));
+                new Employee(firstName,lastName,description,jobYears,email));
         String result = exception.getMessage();
 
         assertEquals(expected,result);
     }
+
+    @Test
+    void getEmail_GivenAppropriateEmail_ReturnsTheEmail() throws InstantiationException {
+        String firstName = "Peter";
+        String lastName = "Parker";
+        String description = "The slimyest employee";
+        int jobYears = 1;
+        String email = "asda@safsa";
+        Employee employee = new Employee(firstName,lastName,description,jobYears,email);
+        String result = employee.getEmail();
+        assertEquals(email,result);
+    }
+
 
 }
