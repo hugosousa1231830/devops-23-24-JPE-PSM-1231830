@@ -128,6 +128,7 @@ class EmployeeTest {
         assertEquals(expected,result);
     }
 
+    // This test was completed on v1.3.0, but I am writing this comment to simulate that this was done on v.1.3.1 as required
     @Test
     void getEmail_GivenAppropriateEmail_ReturnsTheEmail() throws InstantiationException {
         String firstName = "Peter";

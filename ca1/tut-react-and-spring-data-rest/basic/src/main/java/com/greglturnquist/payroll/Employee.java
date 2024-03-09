@@ -61,6 +61,7 @@ public class Employee {
 		return jobYears > 0;
 	}
 
+	// This method was created on v 1.3.0, but I am creating this simulate that this was done on 1.3.1.
 	private boolean isEmailValid(String email){
 		String[] words = email.split("@");
 		return words.length<=2 && !areParamsNullOrEmpty(words[0],words[1]);
@@ -73,7 +74,9 @@ public class Employee {
 		return Objects.equals(id, employee.id) &&
 			Objects.equals(firstName, employee.firstName) &&
 			Objects.equals(lastName, employee.lastName) &&
-			Objects.equals(description, employee.description);
+			Objects.equals(description, employee.description) &&
+			Objects.equals(jobYears, employee.jobYears) &&
+			Objects.equals(email, employee.email);
 	}
 
 	@Override
@@ -137,6 +140,7 @@ public class Employee {
 			", lastName='" + lastName + '\'' +
 			", description='" + description + '\'' +
 			", jobYears='" + jobYears + '\'' +
+				", email='" + jobYears +
 			'}';
 	}
 }
