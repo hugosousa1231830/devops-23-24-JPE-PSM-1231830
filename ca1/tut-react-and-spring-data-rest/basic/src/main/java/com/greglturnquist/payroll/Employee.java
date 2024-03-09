@@ -33,17 +33,19 @@ public class Employee {
 	private String lastName;
 	private String description;
 	private int jobYears;
+	private String email;
 
 	public Employee() {}
 
-	public Employee(String firstName, String lastName, String description, int jobYears) throws InstantiationException {
-		if (areParamsNullOrEmpty(firstName,lastName,description) || !areJobYearsValid(jobYears)){
+	public Employee(String firstName, String lastName, String description, int jobYears, String email) throws InstantiationException {
+		if (areParamsNullOrEmpty(firstName,lastName,description,email) || !isEmailValid(email) || !areJobYearsValid(jobYears)){
 			throw new InstantiationException("Invalid parameters");
 		}
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.description = description;
 		this.jobYears = jobYears;
+		this.email = email;
 	}
 
 	private boolean areParamsNullOrEmpty(String... params){
@@ -59,6 +61,10 @@ public class Employee {
 		return jobYears > 0;
 	}
 
+	private boolean isEmailValid(String email){
+		String[] words = email.split("@");
+		return words.length<=2 && !areParamsNullOrEmpty(words[0],words[1]);
+	}
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -98,6 +104,14 @@ public class Employee {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getDescription() {
