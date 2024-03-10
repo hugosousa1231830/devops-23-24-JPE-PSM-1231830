@@ -74,12 +74,13 @@ git push --tags
 1. Create a new issue on GitHub: #2 New feature - Add a new field to the application.
 
 
-2. Add a new field to the Employee class called jobYears. This field should be an integer and should represent the number of years the employee has been working in the current job.
+2. Add a new field to the [Employee class]((https://github.com/hugosousa1231830/devops-23-24-JPE-PSM-1231830/blob/master/ca1/tut-react-and-spring-data-rest/basic/src/main/java/com/greglturnquist/payroll/Employee.java)) called jobYears. This field should be an integer and should represent the number of years the employee has been working in the current job.
 ```java
 private int jobYears;
 ```
-Make sure to include this new field on the Employee class constructor, getters, setters, toString, equals and hashCode methods.  
-3. Add unit tests for the new field in the EmployeeTest class. The tests should cover all methods and validations. The tests will be abstracted as they do not add much relevance to this assignment, but the full code can be viewed in the EmployeeTest.java file.
+Make sure to include this new field on the Employee class constructor, getters, setters, toString, equals and hashCode methods.
+3. Add [unit tests](https://github.com/hugosousa1231830/devops-23-24-JPE-PSM-1231830/blob/master/ca1/tut-react-and-spring-data-rest/basic/src/test/java/com/greglturnquist/payroll/EmployeeTest.java) 
+for the new field in the EmployeeTest class. The tests should cover all methods and validations. The tests will be abstracted as they do not add much relevance to this assignment, but the full code can be viewed in the EmployeeTest.java file.
  
 
 4. Add the new field to app.js file and to the DatabaseLoader class. The app.js file is a JavaScript file that contains the front-end code for the application. The DatabaseLoader class is a Java class that contains the back-end code for the application.
@@ -125,11 +126,10 @@ Alternatively, we can perform the following command, which will create the branc
 ```bash
 git checkout -b email-field
 ```
-4. Ensure you are working on the email-field branch by using the following command (the active branch is highlighted with "*" next to it):
+4. Ensure you are working on the email-field branch by using the following [command](https://github.com/hugosousa1231830/devops-23-24-JPE-PSM-1231830/blob/master/ca1/README_images/img_5.png) (the active branch is highlighted with "*" next to it):
 ```bash
 git branch
 ```
-![img_5.png](img_5.png)
 
 Alternatively we can also verify the branch we are currently on by looking at the top of the terminal, where the branch name is displayed (blue text).
 
@@ -149,7 +149,7 @@ git branch -r
 6. Add unit tests for the new field in the EmployeeTest class. The tests should cover all methods and validations.
 
 
-7. Add and commit the new changes to the branch using the following command (Make sure to include the issue number in the commit message):
+7. Add and commit the [new changes]((https://github.com/hugosousa1231830/devops-23-24-JPE-PSM-1231830/blob/master/ca1/tut-react-and-spring-data-rest/basic/src/main/java/com/greglturnquist/payroll/Employee.java)) to the branch using the following command (Make sure to include the issue number in the commit message):
 ```bash 
 git add .
 git commit -m "Fixes #3 Create new funcionality - Add email field"
@@ -176,8 +176,8 @@ The -d flag is considered a safe delete, as it is only possible to perform on a 
 git push origin master
 ``` 
 
-12. If you visit the remote project, you will see that the email-field branch is not present. This is because the branch was not pushed to the remote repository. However, the commit history from the email-field branch is preserved in the master branch.
-![img_9.png](img_9.png)11. 
+12. If you visit the [remote project](https://github.com/hugosousa1231830/devops-23-24-JPE-PSM-1231830/blob/master/ca1/README_images/img_5.png), you will see that the email-field branch is not present. This is because the branch was not pushed to the remote repository. However, the commit history from the email-field branch is preserved in the master branch.
+
 
 13. Tag the version of the application using the following command:
 ```bash
@@ -196,7 +196,7 @@ git push master v1.3.0
 git checkout -b fix-invalid-email
 ```
 
-3. Add a validation to the email field in the Employee class. The validation should ensure that the email field is a valid email address. The validation should be done using a regular expression. The regular expression should be added to the Employee class and should be used to validate the email field in the constructor and the setter method. The regular expression should be added to the EmployeeTest class and should be used to test the email field in the EmployeeTest class.
+3. Add a validation to the email field in the Employee class. The validation should [ensure](https://github.com/hugosousa1231830/devops-23-24-JPE-PSM-1231830/tree/master/ca1/tut-react-and-spring-data-rest/basic/src/test/java/com/greglturnquist/payroll) that the email field is a valid email address. The validation should be done using a regular expression. The regular expression should be added to the Employee class and should be used to validate the email field in the constructor and the setter method. The regular expression should be added to the EmployeeTest class and should be used to test the email field in the EmployeeTest class.
 
 
 4. Add and commit the new changes to the branch using the following command (Make sure to include the issue number in the commit message):
@@ -227,8 +227,7 @@ git push origin master
 
 Again, the branch will not be pushed to the remote repository, but the commit history from the fix-invalid-email branch is preserved in the master branch.
 
-
-![img_10.png](img_10.png)
+Click [here](https://github.com/hugosousa1231830/devops-23-24-JPE-PSM-1231830/blob/master/ca1/README_images/img_10.png) to view the commit history on the remote repository. This will highlight the commit history from the fix-invalid-email branch.
 
 9. Tag the version of the application using the following command:
 ```bash
