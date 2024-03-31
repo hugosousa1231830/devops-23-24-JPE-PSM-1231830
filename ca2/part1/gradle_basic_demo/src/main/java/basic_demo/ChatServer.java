@@ -1,6 +1,9 @@
 package basic_demo;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
@@ -11,8 +14,6 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
 
 
 
@@ -39,6 +40,9 @@ public class ChatServer implements Runnable{
     private int serverPort;
 
     public ChatServer(int serverPort){
+        if(serverPort < 0){
+            throw new IllegalArgumentException("Invalid port");
+        }
         names = new HashSet<String>();
         writers = new HashSet<PrintWriter>();
         this.serverPort = serverPort;
