@@ -74,3 +74,11 @@ task runServer(type:JavaExec, dependsOn: classes){
 
     args '59001'
 }
+
+task BackupCopy(type: Copy){
+    group = "DevOps"
+    description = "Copy source files to the target directory"
+
+    from 'src/'
+    into 'backup/'
+}
