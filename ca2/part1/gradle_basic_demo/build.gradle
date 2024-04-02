@@ -82,3 +82,12 @@ task BackupCopy(type: Copy){
     from 'src/'
     into 'backup/'
 }
+
+task BackupZip(type: Zip){
+    group = "DevOps"
+    description = "Creates a .zip file of the source package unto the backup directory"
+
+    from 'src/'
+    archiveFileName = 'src.zip'
+    destinationDirectory = file('backup/')
+}
