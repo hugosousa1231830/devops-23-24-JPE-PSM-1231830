@@ -40,9 +40,6 @@ public class ChatServer implements Runnable{
     private int serverPort;
 
     public ChatServer(int serverPort){
-        if(serverPort < 0){
-            throw new IllegalArgumentException("Invalid port");
-        }
         names = new HashSet<String>();
         writers = new HashSet<PrintWriter>();
         this.serverPort = serverPort;
