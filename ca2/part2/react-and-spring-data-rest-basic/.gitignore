@@ -1,6 +1,8 @@
 HELP.md
 .gradle
 build/
+built
+.frontend-gradle-plugin
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
@@ -35,3 +37,7 @@ out/
 
 ### VS Code ###
 .vscode/
+
+package-lock.json
+node_modules
+node
