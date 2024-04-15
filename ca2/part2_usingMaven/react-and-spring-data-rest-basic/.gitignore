@@ -160,3 +160,8 @@ dist
 # SvelteKit build / generate output
 .svelte-kit
 
+node.exe
+npm
+npm.cmd
+mvnw
+mvnw.cmd
