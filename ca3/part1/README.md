@@ -1,16 +1,18 @@
-# Class Assignment 3 - Part 1 - Virtualization with Vagrant
+# Class Assignment 3 - Part 1 
 
 ## Introduction:
-
+The following project is a continuation of the previous assignments, CA1 and CA2. The project is divided into two parts,
+the first part is a tutorial on how to set up the virtual machine, run the CA1 and CA2 projects on a VirtualBox virtual
+machine. The goal of part1 is to provide a guide on how to set up the virtual machine and run each project, 
+understanding the dependencies and the necessary steps to run them, and the intricacies regarding the execution of the
+projects on a machine with no graphical interface.
 
 ## Table of Contents
-1. [Part 2](#part-2)
-    1. [Arranging the project structure](#arranging-the-project-structure)
-    2. [Adding the frontend support](#adding-the-frontend-support)
-    3. [Adding the copyJar task](#adding-the-copyjar-task)
-    4. [Adding the deleteWebpackFiles task](#adding-the-deletewebpackfiles-task)
-    5. [Merging the branches](#merging-the-branches)
-    6. [Alternative solution - Utilizing maven](#alternative-solution---utilizing-maven)
+1. [Setting up the VirtualBox Virtual Machine](#setting-up-the-virtualbox-virtual-machine)
+2. [Cloning the repository and installing the necessary dependencies](#cloning-the-repository-and-installing-the-necessary-dependencies)
+3. [Running CA1](#running-ca1)
+4. [Running CA2 - Part 1](#running-ca2---part-1)
+5. [Running CA2 - Part 2](#running-ca2---part-2)
 
 ## Setting up the VirtualBox Virtual Machine
 1. To create a virtual machine, first install VirtualBox. To download it from the official website:
