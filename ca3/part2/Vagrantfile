@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
     db.vm.network "forwarded_port", guest: 9092, host: 9092
 
     db.vm.provision "shell", inline: <<-SHELL
-      wget https://repo1.maven.org/maven2/com/h2database/h2/1.4.200/h2-1.4.200.jar
+      wget https://repo1.maven.org/maven2/com/h2database/h2/2.2.224/h2-2.2.224.jar
     SHELL
 
     db.vm.provision "shell", :run => 'always', inline: <<-SHELL
