@@ -32,13 +32,13 @@ pipeline {
             steps {
                 dir('ca2/part1/gradle_basic_demo/') {
                     sh './gradlew test'
-                    junit 'build/test-results/*.xml'
+                    junit 'build/test-results/test/*.xml'
                 }
             }
             post {
                 always {
                     dir('ca2/part1/gradle_basic_demo/') {
-                        archiveArtifacts 'build/test-results/*.xml'
+                        archiveArtifacts 'build/test-results/test/*.xml'
                     }
                 }
             }
