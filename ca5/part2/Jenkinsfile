@@ -1,0 +1,116 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKER_CREDENTIALS_ID = 'DHCRED'
+        DOCKER_IMAGE = "hugosousaw/ca5part2:${env.BUILD_ID}"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/hugosousa1231830/devops-23-24-JPE-PSM-1231830.git'
+            }
+        }
+
+        stage('Assemble') {
+            steps {
+                dir('ca2/part2/react-and-spring-data-rest-basic') {
+                    sh 'chmod +x ./gradlew'
+                    sh './gradlew clean assemble'
+                }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                dir('ca2/part2/react-and-spring-data-rest-basic') {
+                    sh './gradlew test'
+                }
+            }
+            post {
+                always {
+                    junit 'ca2/part2/react-and-spring-data-rest-basic/build/test-results/test/*.xml'
+                }
+            }
+        }
+
+        stage('Javadoc') {
+            steps {
+                dir('ca2/part2/react-and-spring-data-rest-basic') {
+                    sh './gradlew javadoc'
+                }
+            }
+            post {
+                always {
+                    publishHTML(target: [
+                        allowMissing         : false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll              : true,
+                        reportDir            : 'ca2/part2/react-and-spring-data-rest-basic/build/docs/javadoc',
+                        reportFiles          : 'index.html',
+                        reportName           : 'Javadoc'
+                    ])
+                }
+            }
+        }
+
+        stage('Archive') {
+            steps {
+                archiveArtifacts artifacts: 'ca2/part2/react-and-spring-data-rest-basic/build/libs/*.war', fingerprint: true
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                echo 'Building Docker image...'
+                dir('ca2/part2/react-and-spring-data-rest-basic') {
+                    // Copy the WAR file into the Docker build context
+                    sh 'cp build/libs/react-and-spring-data-rest-basic-0.0.1-SNAPSHOT.war .'
+
+                    // Dynamically generate Dockerfile
+                    script {
+                        def dockerfileContent = """
+                        FROM tomcat:10.0.20-jdk17-temurin
+
+                        COPY *.war /usr/local/tomcat/webapps/
+                        """
+                        writeFile file: 'Dockerfile', text: dockerfileContent
+                    }
+
+                    // Build Docker image using Dockerfile
+                    script {
+                        docker.build("${DOCKER_IMAGE}")
+                    }
+                }
+            }
+        }
+
+        stage('Push Docker Image') {
+            steps {
+                echo 'Pushing Docker image to Docker Hub...'
+                script {
+                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_CREDENTIALS_ID) {
+                        docker.image("${DOCKER_IMAGE}").push()
+                    }
+                }
+            }
+        }
+
+        stage('Publish Javadoc') {
+            steps {
+                echo 'Publishing Javadoc...'
+                dir('ca2/part2/react-and-spring-data-rest-basic') {
+                    publishHTML target: [
+                        allowMissing: true, // Allow missing files to debug
+                        alwaysLinkToLastBuild: true,
+                        keepAll: true,
+                        reportDir: 'build/docs/javadoc',
+                        reportFiles: 'index.html',
+                        reportName: 'Javadoc Report'
+                    ]
+                }
+            }
+        }
+    }
+}
