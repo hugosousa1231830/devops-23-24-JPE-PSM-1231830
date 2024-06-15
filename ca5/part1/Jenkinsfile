@@ -1,0 +1,55 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Checking out...'
+                script {
+                    git 'https://github.com/hugosousa1231830/devops-23-24-JPE-PSM-1231830.git'
+                }
+            }
+        }
+
+        stage('Prepare Environment') {
+            steps {
+                echo 'Setting file permissions...'
+                dir('ca2/part1/gradle_basic_demo/') {
+                    sh 'chmod +x ./gradlew'
+                }
+            }
+        }
+
+        stage('Assemble') {
+            steps {
+                dir('ca2/part1/gradle_basic_demo/') {
+                    sh './gradlew assemble'
+                }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                dir('ca2/part1/gradle_basic_demo/') {
+                    sh './gradlew test'
+                    junit 'build/test-results//*.xml'
+                }
+            }
+            post {
+                always {
+                    dir('ca2/part1/gradle_basic_demo/') {
+                        archiveArtifacts 'build/test-results//*.xml'
+                    }
+                }
+            }
+        }
+
+        stage('Archive') {
+            steps {
+                dir('ca2/part1/gradle_basic_demo/') {
+                    archiveArtifacts artifacts: 'build//*.jar', allowEmptyArchive: true
+                }
+            }
+        }
+    }
+}
